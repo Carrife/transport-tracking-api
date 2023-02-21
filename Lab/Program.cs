@@ -60,6 +60,7 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
   ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
 });
 
+app.UseHttpLogging();
 app.UseAuthorization();
 
 app.MapControllers();
