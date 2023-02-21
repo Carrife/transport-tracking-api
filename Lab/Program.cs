@@ -5,6 +5,7 @@ using Lab.Models;
 using Lab.Repositories;
 using Lab.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,8 +22,8 @@ using (AppDbContext context = new AppDbContext())
 
     if (!context.SuperDictionaries.Any())
     {
-        context.SuperDictionaries.Add(new SuperDictionary { Id = 1, Name = "Маршрутка", DictionaryId = 1 });
-        context.SuperDictionaries.Add(new SuperDictionary { Id = 2, Name = "Автобус", DictionaryId = 1 });
+        context.SuperDictionaries.Add(new SuperDictionary { Id = 1, Name = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", DictionaryId = 1 });
+        context.SuperDictionaries.Add(new SuperDictionary { Id = 2, Name = "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", DictionaryId = 1 });
     }
 
     context.SaveChanges();
@@ -54,7 +55,10 @@ if (app.Environment.IsDevelopment())
 app.UseSwagger();
 app.UseSwaggerUI();
 
-app.UseHttpsRedirection();
+app.UseForwardedHeaders(new ForwardedHeadersOptions
+{
+  ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+});
 
 app.UseAuthorization();
 
