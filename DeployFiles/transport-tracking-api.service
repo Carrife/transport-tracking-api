@@ -1,0 +1,11 @@
+[Unit] 
+Description=Transport tracking web api
+
+[Service] 
+WorkingDirectory=/var/www/transport-tracking-api 
+ExecStart=/usr/bin/dotnet /var/www/transport-tracking-api/Lab.dll
+SyslogIdentifier=offershare-web-app
+Environment=ASPNETCORE_ENVIRONMENT=Production 
+
+[Install] 
+WantedBy=multi-user.target
