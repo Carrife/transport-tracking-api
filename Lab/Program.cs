@@ -14,8 +14,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql("Name=DefaultConnection");
 });
 
-builder.Services.AddCors();
-
 using (AppDbContext context = new AppDbContext())
 {
     context.Database.Migrate();
